@@ -8,14 +8,20 @@
             font-style: bold;
         }
     </style>
-    <title>Home</title>
+    <title>File Upload</title>
 </head>
 <body>
-    <h1 class="carnatic">Carnatic Heritage</h1>
-    <form action="/index" method="POST" enctype="multipart/form-data">
+    <h1 class="carnatic">Musical Scale Tester</h1>
+    <form action="/" method="POST" enctype="multipart/form-data">
         <label for="file">"Upload audio file</label>
         <input name ="file" type="file" accept="audio/*">
-        <input type="submit" value="submit">
+        <input type="submit" value="submit" onclick="result">
     </form>
+    <p id="output">
+        {% if key %}
+            The key index is {{key}}
+            The scale is {{key_scale}}
+        {% endif %}
+    </p>
 </body>
 </html>

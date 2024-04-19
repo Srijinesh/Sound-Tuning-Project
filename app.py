@@ -3,18 +3,16 @@ import os
 import sys
 import numpy as np
 import librosa
-
+import requests
+from bs4 import BeautifulSoup as bs
 
 
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return render_template('home.html')
 
-@app.route('/index', methods=['POST'])
-def index():
+@app.route('/', methods=['POST'])
+def home():
         path = os.getcwd()
         if os.path.isdir(path+'/audio_files')==False:
              os.mkdir("audio_files")
@@ -30,7 +28,10 @@ def index():
         chroma_to_key = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
         key = np.argmax(mean_chroma)
         key_scale = chroma_to_key[key]
-        return render_template('index.html',key=key,key_scale = key_scale)
+        return render_template('home.html',key=key,key_scale = key_scale)
+
+
+
 
 
 if __name__=='__main__':
