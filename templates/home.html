@@ -12,16 +12,18 @@
 </head>
 <body>
     <h1 class="carnatic">Musical Scale Tester</h1>
-    <form action="/" method="POST" enctype="multipart/form-data">
+    <form action="/" methods="POST" enctype="multipart/form-data">
         <label for="file">"Upload audio file</label>
         <input name ="file" type="file" accept="audio/*">
-        <input type="submit" value="submit" onclick="result">
+        <input type="submit" value="Submit">
     </form>
-    <p id="output">
-        {% if key %}
-            The key index is {{key}}
-            The scale is {{key_scale}}
-        {% endif %}
-    </p>
+    
+    <p id="output"></p>
+    <script>
+        function printoutput(key,key_scale){
+            var o = document.getElementById('output')
+            o.innerHTML = 'The key index is '+key+', and the key scale is '+key_scale+'.';
+        }
+    </script>
 </body>
 </html>
